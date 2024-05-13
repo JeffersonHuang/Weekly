@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<String> getTextData(String url) async {
     var response = await dio.get(url);
-    getMarkdownData(getMetaData(response.data.toString()));
+    getMarkdownData(response.data.toString());
     return response.data;
   }
 
@@ -119,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
     for (var line in lines) {
       if (line.startsWith('##')) {
         currentYear = line.substring(2).trim();
+        currentArray = [];
       } else if (line.startsWith('**')) {
         currentMonth = line.substring(2, line.length - 2);
         currentArray = [];
@@ -144,10 +145,10 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     String jsonString = jsonEncode(issues);
+    log(jsonString);
     _list = (json.decode(jsonString) as List)
         .map((item) => WeeklyData.fromJson(item))
         .toList();
-    log(_list.toString());
     setState(() {});
     return jsonString;
   }
