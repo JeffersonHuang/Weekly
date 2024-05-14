@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:weekly/constants/url.dart';
+import 'package:weekly/constants/api_path.dart';
 
 class Detail extends StatefulWidget {
   final String link;
@@ -29,7 +29,7 @@ class _DetailState extends State<Detail> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: getTextData(Url.prefix + widget.link),
+          future: getTextData(ApiPath.prefix + widget.link),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Markdown(data: snapshot.data!);

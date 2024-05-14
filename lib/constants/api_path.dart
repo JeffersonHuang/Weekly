@@ -1,4 +1,4 @@
-class Url {
+class ApiPath {
   static const String catalogue =
       'https://raw.githubusercontent.com/ruanyf/weekly/master/README.md';
 
