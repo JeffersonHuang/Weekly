@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weekly/feature/detail/bloc/categories_bloc.dart';
+import 'package:weekly/feature/home/bloc/categories_bloc.dart';
 import '../feature/home/home_page.dart';
 
 class MyApp extends StatelessWidget {

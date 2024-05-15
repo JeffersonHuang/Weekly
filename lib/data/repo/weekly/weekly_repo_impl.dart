@@ -14,7 +14,7 @@ class WeeklyRepoImpl implements WeeklyRepo {
 
   @override
   Future<String> getWeekly({required String url}) async {
-    final response = await apiService.get(path: url);
+    final response = await apiService.get(path: ApiPath.prefix + url);
     log(response.data);
     return response.data;
   }

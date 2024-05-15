@@ -9,6 +9,8 @@ void main() {
     initService();
     initRepo();
 
+    apiService.init();
+
     runApp(const MyApp());
   }, (error, stack) {
     debugPrintStack(stackTrace: stack);

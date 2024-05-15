@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
-import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
 import 'package:weekly/data/models/api_response.dart';
 
 import 'api_service.dart';
@@ -9,7 +7,7 @@ class ApiServiceImpl implements ApiService {
   late Dio _dio;
 
   @override
-  void init({required String baseUrl}) {
+  void init() {
     _dio = Dio();
     // _dio.interceptors.add(
     //   TalkerDioLogger(
