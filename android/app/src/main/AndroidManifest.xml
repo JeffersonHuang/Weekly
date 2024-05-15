@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:label="weekly-beta"
+        android:label="Weekly"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
