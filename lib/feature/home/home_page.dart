@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weekly/feature/article/article.dart';
 import 'package:weekly/feature/home/bloc/categories_bloc.dart';
 
+import 'widgets/categories_list_widget.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
 
@@ -19,7 +21,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // getTextData(ApiPath.catalogue);
   }
 
   @override
@@ -29,39 +30,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Weekly"),
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      body: BlocBuilder<CategoriesBloc, Categories>(
-        builder: (BuildContext context, state) {
-          return Center(
-            child: state.categories.isEmpty
-                ? const CircularProgressIndicator()
-                : ListView.builder(
-                    itemCount: state.categories.length,
-                    itemBuilder: (context, index) {
-                      return ExpansionTile(
-                        title: Text(
-                            '${state.categories[index].year}/${state.categories[index].month}'),
-                        children: [
-                          for (var item in state.categories[index].array)
-                            GestureDetector(
-                              child: ListTile(
-                                title: Text(item.title),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Article(
-                                          title: item.title, link: item.link),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                        ],
-                      );
-                    }),
-          );
-        },
-      ),
+      body: const CategoriesListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
             context.read<CategoriesBloc>().add(const CategoriesFetchEvent()),
