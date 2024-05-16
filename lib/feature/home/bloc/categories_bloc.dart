@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -16,7 +15,6 @@ class CategoriesBloc extends Bloc<CategoriesEvent, Categories> {
   CategoriesBloc() : super(Categories([])) {
     on<CategoriesFetchEvent>((event, emit) async {
       final categories = await weeklyRepo.getAllCategories();
-      log(categories);
       final res = getMarkdownData(categories);
       _list = (json.decode(res) as List)
           .map((item) => WeeklyData.fromJson(item))
@@ -72,7 +70,6 @@ class CategoriesBloc extends Bloc<CategoriesEvent, Categories> {
     }
 
     String jsonString = jsonEncode(issues);
-    log(jsonString);
     return jsonString;
   }
 }
