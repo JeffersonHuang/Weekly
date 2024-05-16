@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:weekly/feature/article/bloc/article_bloc.dart';
 
 import 'widgets/markdown_widget.dart';

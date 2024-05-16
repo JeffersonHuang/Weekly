@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weekly/feature/article/article.dart';
 import 'package:weekly/feature/home/bloc/categories_bloc.dart';
 
 import 'widgets/categories_list_widget.dart';

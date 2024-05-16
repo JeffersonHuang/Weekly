@@ -12,6 +12,9 @@ class ArticleMarkdownWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ArticleBloc, ArticleState>(
       builder: (context, state) {
+        if (state.article.isEmpty) {
+          return const CircularProgressIndicator();
+        }
         return Markdown(
           data: state.article,
           onTapLink: (text, href, title) => context
