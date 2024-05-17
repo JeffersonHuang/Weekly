@@ -11,7 +11,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/JeffersonHuang/Weekly">
     <img src="https://github.com/JeffersonHuang/Weekly/assets/47512530/70e81b95-5b60-4115-800d-ce82903002a5" alt="Logo" width="120" height="120">
   </a>
 
