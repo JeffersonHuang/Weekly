@@ -8,6 +8,7 @@ void main() {
   runZonedGuarded(() {
     initService();
     initRepo();
+    initStorageService();
 
     apiService.init();
 

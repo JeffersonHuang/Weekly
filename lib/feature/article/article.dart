@@ -19,7 +19,6 @@ class Article extends StatefulWidget {
 }
 
 class _ArticleState extends State<Article> {
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
