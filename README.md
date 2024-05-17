@@ -29,7 +29,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## 关于项目
+## 关于
 
 使用Flutter框架编写的App，文章数据来源[
 Ruan YiFeng 科技爱好者周刊](https://github.com/ruanyf/weekly?tab=readme-ov-file)。
@@ -40,7 +40,7 @@ Ruan YiFeng 科技爱好者周刊](https://github.com/ruanyf/weekly?tab=readme-o
 ## 计划
 
 - [x] 暗色主题
-- [ ] 添加目录缓存
+- [x] 添加目录缓存
 - [ ] 文章字体大小调节
 - [ ] 阅读记录
 
