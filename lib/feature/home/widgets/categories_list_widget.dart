@@ -16,28 +16,35 @@ class CategoriesListWidget extends StatelessWidget {
           child: state.categories.isEmpty
               ? const CircularProgressIndicator()
               : ListView.builder(
+                  padding: const EdgeInsets.only(left: 12, right: 12),
                   itemCount: state.categories.length,
                   itemBuilder: (context, index) {
-                    return ExpansionTile(
-                      title: Text(
-                          '${state.categories[index].year}/${state.categories[index].month}'),
-                      children: [
-                        for (var item in state.categories[index].array)
-                          GestureDetector(
-                            child: ListTile(
-                              title: Text(item.title),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Article(
-                                        title: item.title, link: item.link),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                      ],
+                    return Card(
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          title: Text(
+                              '${state.categories[index].year}/${state.categories[index].month}'),
+                          children: [
+                            for (var item in state.categories[index].array)
+                              GestureDetector(
+                                child: ListTile(
+                                  title: Text(item.title),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Article(
+                                            title: item.title, link: item.link),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),
