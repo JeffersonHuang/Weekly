@@ -41,7 +41,10 @@ Ruan YiFeng 科技爱好者周刊](https://github.com/ruanyf/weekly?tab=readme-o
 
 - [x] 暗色主题
 - [x] 添加目录缓存
+- [x] 期刊页面
+- [ ] 美化期刊页面
 - [ ] 文章字体大小调节
 - [ ] 阅读记录
+- [ ] 缓存管理
 
 有关建议功能(和已知问题)的完整列表，请参阅[Open issues](https://github.com/JeffersonHuang/Weekly/issues)。
