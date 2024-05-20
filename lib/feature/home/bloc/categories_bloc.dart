@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:weekly/constants/api_path.dart';
+import 'package:weekly/data/models/book_item.dart';
 import 'package:weekly/data/models/weekly_data.dart';
 import 'package:weekly/data/repo/repo.dart';
 import 'package:weekly/data/service/service.dart';
@@ -14,31 +15,24 @@ part 'categories_state.dart';
 class CategoriesBloc extends Bloc<CategoriesEvent, Categories> {
   List<WeeklyData> _list = [];
 
-  CategoriesBloc() : super(Categories([])) {
+  CategoriesBloc() : super(Categories([], true)) {
     on<CategoriesFetchEvent>((event, emit) async {
-      try {
-        final file = await weeklyRepo.getLocalFile();
-        if (file.isNotEmpty) {
-          _list = _parseJsonToList(file);
-          emit(Categories(_list));
-        }
-        await fetchAndCacheCategories();
-        emit(Categories(_list));
-      } catch (e) {
-        // TODO: 发出错误状态
-        throw Exception('Failed to fetch or cache categories: ${e.toString()}');
+      final file = await weeklyRepo.getLocalFile();
+      if (file.isNotEmpty) {
+        _list = _parseJsonToList(file);
+        emit(Categories(_list, false));
       }
+      await fetchAndCacheCategories();
+      emit(Categories(_list, false));
     });
   }
 
   Future<void> fetchAndCacheCategories() async {
-    try {
-      final categories = await weeklyRepo.getAllCategories();
-      final res = _getMarkdownData(categories);
+    final categories = await weeklyRepo.getAllCategories();
+    if (categories.statusCode == 200) {
+      final res = _getMarkdownData(categories.data);
       _list = _parseJsonToList(res);
       storageService.cacheWeeklyData(cacheFileName: ApiPath.readme, data: res);
-    } catch (e) {
-      throw Exception('Failed to fetch or cache categories: ${e.toString()}');
     }
   }
 

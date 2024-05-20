@@ -1,27 +1,17 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weekly/feature/home/bloc/categories_bloc.dart';
 
-import 'widgets/categories_list_widget.dart';
+import 'bloc/categories_bloc.dart';
+import 'widgets/book_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final dio = Dio();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +19,9 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Weekly"),
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      body: const CategoriesListWidget(),
+      body: const Center(
+        child: BookWidget(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
             context.read<CategoriesBloc>().add(const CategoriesFetchEvent()),

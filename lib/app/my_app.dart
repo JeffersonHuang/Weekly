@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
               colorScheme: darkDynamic,
               useMaterial3: true,
             ),
-            home: const HomePage(title: 'Weekly'),
+            home: const HomePage(),
           );
         },
       ),

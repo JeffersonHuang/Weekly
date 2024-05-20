@@ -30,7 +30,7 @@ class ApiServiceImpl implements ApiService {
         response,
       );
     } on DioException catch (e) {
-      return ApiResponse.error(e.toString());
+      return ApiResponse.error(e.toString(), message: e.message);
     } catch (e) {
       return ApiResponse.error(e.toString());
     }

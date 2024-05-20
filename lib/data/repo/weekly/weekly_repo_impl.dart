@@ -1,36 +1,30 @@
 import 'dart:io';
 
 import 'package:weekly/constants/api_path.dart';
+import 'package:weekly/data/models/api_response.dart';
 import 'package:weekly/data/service/service.dart';
 
 import 'weekly_repo.dart';
 
 class WeeklyRepoImpl implements WeeklyRepo {
   @override
-  Future<String> getAllCategories() async {
+  Future<ApiResponse> getAllCategories() async {
     final response = await apiService.get(path: ApiPath.catalogue);
-    return response.data;
+    return response;
   }
 
   @override
   Future<String> getWeekly({required String url}) async {
-    try {
-      final File file = await storageService.getLocalFile(url);
-      if (await file.exists()) {
-        return await file.readAsString();
-      }
-
-      final response = await _getWeeklyFromNetwork(url: url);
-      storageService.cacheWeeklyData(cacheFileName: url, data: response);
-      return response;
-    } catch (e) {
-      return "Oops，发生异常";
+    final File file = await storageService.getLocalFile(url);
+    if (await file.exists()) {
+      return await file.readAsString();
     }
-  }
-
-  Future<String> _getWeeklyFromNetwork({required String url}) async {
     final response = await apiService.get(path: ApiPath.prefix + url);
-    return response.data;
+    if (response.statusCode == 200) {
+      storageService.cacheWeeklyData(cacheFileName: url, data: response.data);
+      return response.data;
+    }
+    return response.message;
   }
 
   @override

@@ -16,10 +16,12 @@ class ApiResponse {
     this.data = const {},
   });
 
-  factory ApiResponse.error(String error, {int statusCode = 0}) {
+  factory ApiResponse.error(String error,
+      {int statusCode = 0, String? message}) {
     return ApiResponse(
       error: error,
       statusCode: statusCode,
+      message: message ?? '',
     );
   }
 
@@ -27,7 +29,7 @@ class ApiResponse {
     return ApiResponse(
       statusCode: response.statusCode ?? 0,
       data: response.data,
-      message: response.statusMessage ?? "",
+      message: response.statusMessage ?? '',
     );
   }
 }
